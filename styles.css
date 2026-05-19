@@ -1,0 +1,447 @@
+/* 
+   Premium Cinematic Wedding Invite
+   Theme: Royal Indian Palace Sunset 
+   Color Palette: Deep Burgundy, Rich Amber, Metallic Gold, Warm Ivory
+*/
+
+@font-face {
+  font-family: 'Cormorant';
+  src: url('fonts.gstatic.com/s/cormorant/v24/H4clBXOCl9bbnla_nHIq75u9.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Cormorant Infant';
+  src: url('fonts.gstatic.com/s/cormorantinfant/v22/HhyCU44g9vKiM1sORYSiWeAsLN99xfs9KOOc_agJPrgvYNWUjjg.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Cormorant Upright';
+  src: url('fonts.gstatic.com/s/cormorantupright/v19/VuJrdM3I2Y35poFONtLdafkUCHw1y1vShDU.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Cormorant Upright';
+  src: url('fonts.gstatic.com/s/cormorantupright/v19/VuJudM3I2Y35poFONtLdafkUCHw1y1MhpyDrWdQ.woff2') format('woff2');
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Gotu';
+  src: url('fonts.gstatic.com/s/gotu/v18/o-0FIpksx3QOpHoBiw.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Manrope';
+  src: url('fonts.gstatic.com/s/manrope/v20/xn7gYHE41ni1AdIRggexSg.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+:root {
+  --color-burgundy: #1e060d;
+  --color-sunset: #48141c;
+  --color-gold-light: #f3e5ab;
+  --color-gold-metallic: #d4af37;
+  --color-gold-dark: #b8860b;
+  --color-ivory: #faf6ee;
+  --color-text-dim: rgba(250, 246, 238, 0.7);
+  --font-serif-title: 'Cormorant Upright', 'Cormorant', serif;
+  --font-serif-body: 'Cormorant Infant', serif;
+  --font-sans: 'Manrope', sans-serif;
+  --font-holy: 'Gotu', serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body, html {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  background-color: var(--color-burgundy);
+  font-family: var(--font-serif-body);
+  color: var(--color-ivory);
+}
+
+/* Scroll Snap Container (ready for multi-section if needed) */
+.smooth-container {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
+/* Fullscreen Hero Section */
+.hero-section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  z-index: 10;
+}
+
+/* Background Image Layer (Parallax ready) */
+.hero-bg-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 115%; /* Extra height to support parallax shift */
+  background-image: url('framerusercontent.com/images/trrcGmnZNE98GqZNMGRxrszIfs.png');
+  background-size: cover;
+  background-position: center 85%;
+  transform: scale(1.05);
+  will-change: transform;
+}
+
+/* Multi-layered Cinematic Gradient Vignette Overlay */
+.hero-overlay-sunset {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(30, 6, 13, 0.4) 0%,
+    rgba(40, 10, 18, 0.5) 40%,
+    rgba(30, 6, 13, 0.85) 85%,
+    rgba(15, 2, 6, 0.98) 100%
+  );
+  z-index: 2;
+}
+
+.hero-overlay-radial {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle at center,
+    rgba(212, 175, 55, 0.05) 0%,
+    rgba(30, 6, 13, 0.3) 50%,
+    rgba(15, 2, 6, 0.85) 90%,
+    rgba(8, 1, 3, 0.98) 100%
+  );
+  z-index: 3;
+}
+
+/* Lantern Canvas Layers (Foreground & Background for Depth of Field) */
+.lantern-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+#bg-lanterns {
+  z-index: 4; /* Behind the content text */
+  opacity: 0.85;
+}
+
+#fg-lanterns {
+  z-index: 7; /* In front of the content text for immersion */
+  opacity: 0.9;
+  filter: blur(1.5px); /* Foreground bokeh depth blur */
+}
+
+/* Hero Centered Content Container */
+.hero-content {
+  position: relative;
+  width: 90%;
+  max-width: 800px;
+  text-align: center;
+  z-index: 6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+/* Ek Onkar Holy Symbol / Decorative Cap */
+.holy-symbol {
+  font-family: var(--font-holy);
+  font-size: 2.2rem;
+  color: var(--color-gold-metallic);
+  background: linear-gradient(135deg, var(--color-gold-light) 0%, var(--color-gold-metallic) 50%, var(--color-gold-dark) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.6));
+  margin-bottom: 0.8rem;
+  letter-spacing: 2px;
+  will-change: transform, opacity;
+}
+
+/* Decorative border/header text */
+.welcome-text {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.35em;
+  color: var(--color-gold-light);
+  opacity: 0.8;
+  margin-bottom: 1.8rem;
+  font-weight: 500;
+  will-change: transform, opacity;
+}
+
+/* Title / Couple Names Container */
+.names-wrapper {
+  margin: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.name-line {
+  font-family: var(--font-serif-title);
+  font-size: 4rem;
+  font-weight: normal;
+  line-height: 1.1;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-ivory);
+  background: linear-gradient(to bottom, #ffffff 30%, #faf6ee 70%, rgba(243, 229, 171, 0.9) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.7));
+  will-change: transform, opacity, letter-spacing;
+}
+
+/* WEDS Connector Divider Ornament */
+.weds-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 320px;
+  margin: 0.5rem 0;
+  will-change: opacity, transform;
+}
+
+.weds-line {
+  flex-grow: 1;
+  height: 1px;
+  background: linear-gradient(to right, rgba(212, 175, 55, 0) 0%, rgba(212, 175, 55, 0.6) 50%, rgba(212, 175, 55, 0) 100%);
+}
+
+.weds-text {
+  font-family: var(--font-serif-body);
+  font-size: 1.1rem;
+  font-style: italic;
+  letter-spacing: 0.25em;
+  color: var(--color-gold-metallic);
+  padding: 0 1.2rem;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, var(--color-gold-light) 0%, var(--color-gold-metallic) 50%, var(--color-gold-dark) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.5));
+}
+
+/* Main Indian Wedding Divider */
+.ornamental-divider {
+  width: 100%;
+  max-width: 160px;
+  height: 36px;
+  margin: 1.5rem 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 24' fill='none'%3E%3Cpath d='M60 2C57 8 50 12 40 12M60 2C63 8 70 12 80 12M60 22C57 16 50 12 40 12M60 22C63 16 70 12 80 12M40 12C30 12 25 10 20 12M80 12C90 12 95 10 100 12M20 12C15 13 10 10 2 12M100 12C105 13 110 10 118 12' stroke='%23d4af37' stroke-width='1' stroke-linecap='round'/%3E%3Ccircle cx='60' cy='12' r='3' fill='%23d4af37'/%3E%3Ccircle cx='40' cy='12' r='1.5' fill='%23d4af37'/%3E%3Ccircle cx='80' cy='12' r='1.5' fill='%23d4af37'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.85;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
+  will-change: opacity, transform;
+}
+
+/* Subtitle and ceremony details */
+.ceremony-details {
+  margin-top: 0.5rem;
+  will-change: transform, opacity;
+}
+
+.ceremony-title {
+  font-family: var(--font-serif-title);
+  font-size: 1.8rem;
+  letter-spacing: 0.2em;
+  color: var(--color-gold-metallic);
+  text-transform: uppercase;
+  margin-bottom: 0.6rem;
+  background: linear-gradient(135deg, var(--color-gold-light) 0%, var(--color-gold-metallic) 60%, var(--color-gold-dark) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+}
+
+.ceremony-info {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  color: var(--color-text-dim);
+  font-weight: 500;
+  line-height: 1.8;
+}
+
+/* Pulse scroll indicator */
+.scroll-indicator {
+  position: absolute;
+  bottom: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  z-index: 8;
+  cursor: pointer;
+  will-change: opacity, transform;
+}
+
+.scroll-text {
+  font-family: var(--font-sans);
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.4em;
+  color: var(--color-gold-light);
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.scroll-arrow {
+  width: 24px;
+  height: 24px;
+  stroke: var(--color-gold-metallic);
+  fill: none;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  animation: scrollFloat 2.5s infinite ease-in-out;
+}
+
+.scroll-indicator:hover .scroll-text {
+  opacity: 1;
+}
+
+/* Background music control (luxury gold ornament) */
+.music-toggle {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  width: 48px;
+  height: 48px;
+  background: rgba(30, 6, 13, 0.6);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.music-toggle svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: var(--color-gold-metallic);
+  stroke-width: 1.5;
+  transition: stroke 0.3s ease;
+}
+
+.music-toggle:hover {
+  transform: scale(1.08) rotate(15deg);
+  border-color: var(--color-gold-metallic);
+  background: rgba(48, 14, 22, 0.8);
+  box-shadow: 0 6px 16px rgba(212, 175, 55, 0.25);
+}
+
+/* Floating Lantern animation keyframes */
+@keyframes scrollFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(6px);
+  }
+}
+
+/* Responsive Scaling Rules (Mobile First to Big Screen Ultra Wide) */
+@media (max-width: 500px) {
+  .name-line {
+    font-size: 2.6rem;
+    letter-spacing: 0.05em;
+  }
+  .weds-divider {
+    max-width: 240px;
+  }
+  .ornamental-divider {
+    max-width: 120px;
+    margin: 1.2rem 0;
+  }
+  .ceremony-title {
+    font-size: 1.4rem;
+  }
+  .ceremony-info {
+    font-size: 0.65rem;
+    letter-spacing: 0.22em;
+  }
+  .holy-symbol {
+    font-size: 1.8rem;
+  }
+  .music-toggle {
+    top: 1rem;
+    right: 1rem;
+    width: 40px;
+    height: 40px;
+  }
+  .music-toggle svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .name-line {
+    font-size: 5.5rem;
+  }
+  .weds-text {
+    font-size: 1.3rem;
+  }
+  .ceremony-title {
+    font-size: 2.2rem;
+  }
+  .ceremony-info {
+    font-size: 0.8rem;
+  }
+  .ornamental-divider {
+    max-width: 200px;
+  }
+}
