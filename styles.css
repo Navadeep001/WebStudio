@@ -445,3 +445,333 @@ body, html {
     max-width: 200px;
   }
 }
+
+/* =========================================================================
+   Cinematic Invitation Intro Section (Royal Textured Turquoise)
+   ========================================================================= */
+
+:root {
+  --color-turquoise-dark: #051619;
+  --color-turquoise-medium: #09262b;
+  --color-turquoise-light: #0d383e;
+}
+
+.intro-section {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--color-turquoise-dark);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  padding: 6rem 2rem;
+  z-index: 10;
+}
+
+.intro-bg-gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle at center,
+    rgba(212, 175, 55, 0.08) 0%,
+    rgba(9, 38, 43, 0.45) 50%,
+    rgba(5, 22, 25, 0.96) 100%
+  );
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Traditional high-end fine Indian damask wallpaper pattern overlay */
+.intro-bg-pattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cpath d='M40 0 C45 15 35 25 40 40 C35 55 45 65 40 80 M0 40 C15 45 25 35 40 40 C55 35 65 45 80 40' stroke='rgba(212, 175, 55, 0.03)' stroke-width='0.75' fill='none'/%3E%3Ccircle cx='40' cy='40' r='1.5' fill='rgba(212, 175, 55, 0.04)'/%3E%3Cpath d='M20 20 C25 25 15 35 20 40 C15 45 25 55 20 60' stroke='rgba(212, 175, 55, 0.015)' stroke-width='0.5' fill='none'/%3E%3C/svg%3E");
+  opacity: 0.85;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Premium Traditional Gold Leaf Borders */
+.intro-frame-top, .intro-frame-bottom {
+  position: absolute;
+  left: 6%;
+  width: 88%;
+  height: 16px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 8' fill='none'%3E%3Cpath d='M0 4 H100 M20 1 L24 4 L20 7 M80 1 L76 4 L80 7' stroke='%23d4af37' stroke-width='0.75' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: repeat-x;
+  z-index: 5;
+  opacity: 0.5;
+  pointer-events: none;
+}
+.intro-frame-top { top: 3rem; }
+.intro-frame-bottom { bottom: 3rem; }
+
+/* Content block with cinematic vertical spacing */
+.intro-content {
+  position: relative;
+  width: 90%;
+  max-width: 860px;
+  text-align: center;
+  z-index: 6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 0;
+}
+
+/* Mool Mantar text header */
+.intro-mantar {
+  font-family: var(--font-holy);
+  font-size: 1.15rem;
+  letter-spacing: 0.12em;
+  color: var(--color-gold-metallic);
+  background: linear-gradient(135deg, var(--color-gold-light) 0%, var(--color-gold-metallic) 60%, var(--color-gold-dark) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.5));
+  margin-bottom: 1.2rem;
+  opacity: 0.9;
+  will-change: transform, opacity;
+}
+
+/* Beautiful serif introduction heading */
+.intro-heading {
+  font-family: var(--font-serif-title);
+  font-size: 3rem;
+  font-weight: normal;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--color-ivory);
+  background: linear-gradient(to bottom, #ffffff 40%, #faf6ee 80%, rgba(243, 229, 171, 0.8) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.6));
+  margin-bottom: 0.6rem;
+  will-change: transform, opacity;
+}
+
+/* Elegant gold line under heading */
+.intro-mini-divider {
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(to right, rgba(212, 175, 55, 0), rgba(212, 175, 55, 0.8) 50%, rgba(212, 175, 55, 0));
+  margin-bottom: 3.5rem;
+  will-change: transform, opacity;
+}
+
+/* Parent/Family Columns Composition */
+.family-columns {
+  display: grid;
+  grid-template-columns: 1fr 60px 1fr;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 3.5rem;
+  will-change: transform, opacity;
+}
+
+.family-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.family-title {
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: var(--color-gold-light);
+  opacity: 0.75;
+  margin-bottom: 0.2rem;
+}
+
+.family-member {
+  font-family: var(--font-serif-title);
+  font-size: 1.8rem;
+  color: var(--color-ivory);
+  letter-spacing: 0.05em;
+  line-height: 1.2;
+}
+
+.family-member.highlight {
+  color: var(--color-gold-metallic);
+  background: linear-gradient(135deg, var(--color-gold-light) 0%, var(--color-gold-metallic) 50%, var(--color-gold-dark) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.family-relation {
+  font-family: var(--font-serif-body);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--color-text-dim);
+  letter-spacing: 0.05em;
+}
+
+.family-mini-line {
+  width: 30px;
+  height: 1px;
+  background: rgba(250, 246, 238, 0.15);
+  margin: 0.2rem 0;
+}
+
+/* Vertical / Central Separator Ornament */
+.family-separator {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.family-separator .separator-line {
+  width: 1px;
+  flex-grow: 1;
+  background: linear-gradient(to bottom, rgba(212, 175, 55, 0), rgba(212, 175, 55, 0.4) 50%, rgba(212, 175, 55, 0));
+  min-height: 40px;
+}
+
+.family-separator .separator-ornament {
+  width: 12px;
+  height: 12px;
+  border: 1px solid var(--color-gold-metallic);
+  transform: rotate(45deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.family-separator .separator-ornament::after {
+  content: '';
+  width: 4px;
+  height: 4px;
+  background-color: var(--color-gold-metallic);
+}
+
+/* Lower ornamental divider */
+.intro-ornamental-divider {
+  width: 100%;
+  max-width: 140px;
+  height: 24px;
+  margin-bottom: 3.5rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 24' fill='none'%3E%3Cpath d='M30 12 C45 6 55 18 60 12 C65 18 75 6 90 12' stroke='%23d4af37' stroke-width='0.75' stroke-linecap='round'/%3E%3Ccircle cx='60' cy='12' r='2' fill='%23d4af37'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.75;
+  will-change: transform, opacity;
+}
+
+/* Main invitation text block */
+.invite-statement {
+  will-change: transform, opacity;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.invite-text-main {
+  font-family: var(--font-serif-body);
+  font-size: 1.45rem;
+  line-height: 1.5;
+  color: var(--color-ivory);
+  letter-spacing: 0.03em;
+  opacity: 0.95;
+}
+
+.invite-text-sub {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  color: var(--color-text-dim);
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+.invite-event-date {
+  font-family: var(--font-serif-title);
+  font-size: 1.6rem;
+  color: var(--color-gold-metallic);
+  letter-spacing: 0.15em;
+  margin-top: 1.2rem;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, var(--color-gold-light) 0%, var(--color-gold-metallic) 60%, var(--color-gold-dark) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.4));
+}
+
+/* Responsive Scaling Rules for Intro Section */
+@media (max-width: 768px) {
+  .intro-section {
+    padding: 5rem 1.5rem;
+  }
+  .intro-frame-top { top: 1.8rem; }
+  .intro-frame-bottom { bottom: 1.8rem; }
+  
+  .intro-mantar {
+    font-size: 1rem;
+  }
+  .intro-heading {
+    font-size: 2.3rem;
+  }
+  .intro-mini-divider {
+    margin-bottom: 2.5rem;
+  }
+  
+  .family-columns {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-bottom: 2.5rem;
+  }
+  
+  .family-separator {
+    height: auto;
+    flex-direction: row;
+    gap: 0.8rem;
+    margin: 0.5rem 0;
+  }
+  
+  .family-separator .separator-line {
+    width: 30px;
+    height: 1px;
+    background: linear-gradient(to right, rgba(212, 175, 55, 0), rgba(212, 175, 55, 0.4) 50%, rgba(212, 175, 55, 0));
+    min-height: auto;
+  }
+  
+  .family-member {
+    font-size: 1.5rem;
+  }
+  .family-relation {
+    font-size: 0.95rem;
+  }
+  
+  .intro-ornamental-divider {
+    margin-bottom: 2.5rem;
+  }
+  
+  .invite-text-main {
+    font-size: 1.2rem;
+  }
+  .invite-text-sub {
+    font-size: 0.65rem;
+    letter-spacing: 0.22em;
+  }
+  .invite-event-date {
+    font-size: 1.35rem;
+  }
+}
+

@@ -9,6 +9,7 @@
 
 document.addEventListener("DOMContentLoaded", () => {
   initEntranceAnimations();
+  initIntroAnimations();
   initLanterns();
   initAtmosphereAudio();
 });
@@ -72,6 +73,7 @@ function initEntranceAnimations() {
     ease: "none",
     scrollTrigger: {
       trigger: "#hero",
+      scroller: ".smooth-container",
       start: "top top",
       end: "bottom top",
       scrub: true
@@ -84,6 +86,7 @@ function initEntranceAnimations() {
     ease: "none",
     scrollTrigger: {
       trigger: "#hero",
+      scroller: ".smooth-container",
       start: "top top",
       end: "bottom top",
       scrub: true
@@ -402,4 +405,99 @@ function initAtmosphereAudio() {
       playAtmosphere();
     }
   });
+}
+
+/* =========================================================================
+   4. Cinematic Intro Section Animations (GSAP + ScrollTrigger)
+   ========================================================================= */
+function initIntroAnimations() {
+  // Set initial states for entrance animations
+  gsap.set("#intro-mantar", { opacity: 0, y: 15 });
+  gsap.set("#intro-title", { opacity: 0, y: 25 });
+  gsap.set("#intro-div-1", { scaleX: 0 });
+  
+  gsap.set("#groom-family", { opacity: 0, x: -30 });
+  gsap.set("#bride-family", { opacity: 0, x: 30 });
+  gsap.set("#family-sep", { opacity: 0, scaleY: 0 });
+  
+  gsap.set("#intro-div-2", { opacity: 0, scale: 0.5 });
+  gsap.set("#intro-statement", { opacity: 0, y: 25 });
+  
+  // Set initial states for ambient frames
+  gsap.set(".intro-frame-top, .intro-frame-bottom", { opacity: 0 });
+
+  // 1. Reveal Section Frame borders slowly
+  gsap.to(".intro-frame-top, .intro-frame-bottom", {
+    opacity: 0.5,
+    duration: 2.5,
+    ease: "power2.out",
+    scrollTrigger: {
+      trigger: "#intro",
+      scroller: ".smooth-container",
+      start: "top 95%",
+      toggleActions: "play none none none"
+    }
+  });
+
+  // 2. Core Text Entrance ScrollTimeline
+  const introTL = gsap.timeline({
+    scrollTrigger: {
+      trigger: "#intro",
+      scroller: ".smooth-container",
+      start: "top 95%", // Trigger when top of section enters 95% from viewport top
+      toggleActions: "play none none none"
+    }
+  });
+
+  introTL
+    // Stagger Mool Mantar & Heading
+    .to("#intro-mantar", { opacity: 0.9, y: 0, duration: 1.2, ease: "power2.out" })
+    .to("#intro-title", { opacity: 1, y: 0, duration: 1.6, ease: "power3.out" }, "-=0.8")
+    .to("#intro-div-1", { scaleX: 1, duration: 1.0, ease: "power2.inOut" }, "-=1.0")
+    
+    // Balanced columns reveal
+    .to("#family-sep", { opacity: 1, scaleY: 1, duration: 1.2, ease: "power2.out" }, "-=0.6")
+    .to("#groom-family", { opacity: 1, x: 0, duration: 1.5, ease: "power3.out" }, "-=1.0")
+    .to("#bride-family", { opacity: 1, x: 0, duration: 1.5, ease: "power3.out" }, "-=1.5")
+    
+    // Bottom ornament & invitation statement
+    .to("#intro-div-2", { opacity: 0.75, scale: 1, duration: 1.2, ease: "back.out(1.5)" }, "-=0.8")
+    .to("#intro-statement", { opacity: 1, y: 0, duration: 1.6, ease: "power3.out" }, "-=0.8");
+
+  // 3. Subtle ambient hover/float animations (Handcrafted feeling)
+  // Let the frames drift slightly left and right as the user scrolls
+  gsap.to(".intro-frame-top", {
+    x: "1.5%",
+    ease: "sine.inOut",
+    scrollTrigger: {
+      trigger: "#intro",
+      scroller: ".smooth-container",
+      start: "top bottom",
+      end: "bottom top",
+      scrub: 1.5
+    }
+  });
+  
+  gsap.to(".intro-frame-bottom", {
+    x: "-1.5%",
+    ease: "sine.inOut",
+    scrollTrigger: {
+      trigger: "#intro",
+      scroller: ".smooth-container",
+      start: "top bottom",
+      end: "bottom top",
+      scrub: 1.5
+    }
+  });
+
+  // Force ScrollTrigger calculations to refresh after full load & fonts are ready
+  window.addEventListener("load", () => {
+    ScrollTrigger.refresh();
+  });
+  
+  if (document.fonts) {
+    document.fonts.ready.then(() => {
+      ScrollTrigger.refresh();
+    });
+  }
 }
